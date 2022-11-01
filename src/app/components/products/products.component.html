@@ -1,0 +1,32 @@
+<div class="container" style="margin-top:100px;">
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3" data-masonry='{"percentPosition": true }'>
+        <div class="col" *ngFor="let product of productList">
+            <div class="card">
+                <div class="card-media card-media-top position-relative">
+                    <span class="position-absolute top-100 end-0 translate-middle badge badge-large bg-danger">New</span>
+                    <div class="overflow-hidden d-flex justify-content-center" style="width:250px; height:200px;">
+                        <img src="{{ product.image }}" alt="{{ product.title }}" class="card-img-top align-middle" style="max-height:200px; width:auto; max-width: 250px;">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title text-center text-nowrap text-truncate" title="{{ product.title }}">{{ product.title }}</h5>
+                    <p class="h3 text-primary">${{ product.price|number }}</p>
+                    <div class="rating d-flex" role="rating"> 
+                        <ul class="text-warning d-inline mx-0">
+                            <li class="fa fa-star" aria-hidden></li>
+                            <li class="fa fa-star" aria-hidden></li>
+                            <li class="fa fa-star-half-o" aria-hidden></li>
+                            <li class="fa fa-star-o" aria-hidden></li>
+                            <li class="fa fa-star-o" aria-hidden></li>
+                        </ul> 
+                        &nbsp;<strong>{{ product.rating.rate }}</strong>&nbsp;<span>({{ product.rating.count }})</span>
+                    </div>
+                    <div class="d-flex w-100">
+                        <button type="button" class="btn btn-primary w-100" (click)="addToCart(product)"><i class="fa fa-plus" aria-hidden="true"></i> Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
